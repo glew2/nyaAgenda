@@ -3,12 +3,31 @@ window.addEventListener("load", () => {
     const input = document.querySelector("#new-item-input");
     const element = document.querySelector("#items");
 
+    let prev = JSON.parse(localStorage.getItem('prevItems'));
+    if (prev!=null) {
+        for (i=0; i<prev.length; i++) {
+            createElement(prev[i]);
+        }
+    }
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const item = input.value;
         if (!item) {
             return;
         }
+
+        const prevItems = JSON.parse(localStorage.getItem("prevItems"))
+        if (prevItems == null) {
+            localStorage.setItem("prevItems", JSON.stringify([item]))
+        } else {
+            prevItems.push(item)
+            localStorage.setItem("prevItems", JSON.stringify(prevItems))
+        }
+        createElement(item);
+    });
+
+    function createElement (item) {
         const itemElement = document.createElement("div");
         itemElement.classList.add("item");
         
@@ -37,6 +56,7 @@ window.addEventListener("load", () => {
         itemActionsElement.appendChild(editElement); itemActionsElement.appendChild(deleteElement);
         itemElement.appendChild(itemActionsElement);
         element.appendChild(itemElement);
+
         input.value="";
 
         editElement.addEventListener("click", ()=>{
@@ -52,7 +72,12 @@ window.addEventListener("load", () => {
         });
 
         deleteElement.addEventListener("click", ()=>{
+            let prevItems = JSON.parse(localStorage.getItem("prevItems"))
+
+            // Delete item from localStorage AND current HTML
+            prevItems.splice(prevItems.indexOf(item), 1)
+            localStorage.setItem("prevItems", JSON.stringify(prevItems))
             element.removeChild(itemElement);
         });
-    });
+    }
 });

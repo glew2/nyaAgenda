@@ -20,6 +20,8 @@ body {
 	min-height: 100vh;
 	color: #FFF;
 	background-color: var(--dark);
+	border-left: var(--darker);
+	border-right: var(--darker);
 }
 
 header {
