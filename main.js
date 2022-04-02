@@ -2,6 +2,8 @@ window.addEventListener("load", () => {
     const form = document.querySelector("#new-item-form");
     const input = document.querySelector("#new-item-input");
     const element = document.querySelector("#items");
+    var countHTML = document.getElementById("taskCount");
+    var taskCount = 0;
 
     let prev = JSON.parse(localStorage.getItem('prevItems'));
     if (prev!=null) {
@@ -28,6 +30,8 @@ window.addEventListener("load", () => {
     });
 
     function createElement (item) {
+        taskCount++;
+        countHTML.textContent = "Tasks: " + taskCount;
         const itemElement = document.createElement("div");
         itemElement.classList.add("item");
         
@@ -53,7 +57,8 @@ window.addEventListener("load", () => {
         deleteElement.classList.add("delete");
         deleteElement.innerHTML="Delete";
 
-        itemActionsElement.appendChild(editElement); itemActionsElement.appendChild(deleteElement);
+        itemActionsElement.appendChild(editElement);
+        itemActionsElement.appendChild(deleteElement);
         itemElement.appendChild(itemActionsElement);
         element.appendChild(itemElement);
 
@@ -81,6 +86,8 @@ window.addEventListener("load", () => {
             // Delete item from localStorage AND current HTML
             prevItems.splice(prevItems.indexOf(item), 1);
             localStorage.setItem("prevItems", JSON.stringify(prevItems));
+            taskCount--;
+            countHTML.textContent = "Tasks: " + taskCount;
             element.removeChild(itemElement);
         });
     }

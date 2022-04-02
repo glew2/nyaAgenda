@@ -2,7 +2,7 @@
 	--dark: #374151;
 	--darker: #1F2937;
 	--darkest: #111827;
-	--grey: #6B7280;
+	--grey: #838b9c;
 	--pink: #EC4899;
 	--red: #EB212E;
 	--orange: #ff8303;
@@ -80,7 +80,7 @@ input, button {
 }
 
 #new-item-input::placeholder {
-	color: var(--grey);
+	color: #454f5c;
 }
 
 #new-item-submit {
@@ -103,10 +103,13 @@ input, button {
 }
 
 main {
+	background-color: var(--darker);
+	border-radius: 1.25rem;
 	flex: 1 1 0%;
-	max-width: 800px;
+	max-width: 775px;
 	width: 100%;
 	margin: 0 auto;
+	margin-bottom: 1.5rem;
 }
 
 .item-list {
@@ -114,7 +117,20 @@ main {
 }
 
 .item-list h2 {
+	display: inline;
 	font-size: 1.5rem;
+	font-weight: 300;
+	color: var(--grey);
+	margin-bottom: 1rem;
+	margin-right: 4rem;
+}
+
+.item-list h3 {
+	display: inline;
+	font-size: 1.2rem;
+	background-color: var(--darkest);
+	padding: 0.5rem;
+	border-radius: 0.75rem;
 	font-weight: 300;
 	color: var(--grey);
 	margin-bottom: 1rem;
@@ -128,7 +144,7 @@ main {
 	border-radius: 1rem;
 	margin-bottom: 1rem;
 	will-change: transform;
-	cursor: crosshair;
+	cursor: default;
 	transition: all 200ms;
 	margin: 10px auto;
 	position: relative;
@@ -147,7 +163,7 @@ main {
 }
 
 #items .item .content .text:not(:read-only) {
-	color: var(--pink);
+	color: var(--teel);
 }
 
 #items .item .actions {
@@ -165,11 +181,11 @@ main {
 }
 
 .item .actions button:hover {
-	opacity: 0.8;
+	opacity: 0.4;
 }
 
 .item .actions button:active {
-	opacity: 0.6;
+	opacity: 0.3;
 }
 
 .item .actions .edit {
