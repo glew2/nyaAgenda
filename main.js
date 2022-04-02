@@ -66,17 +66,21 @@ window.addEventListener("load", () => {
                 editElement.innerText = "Save";
             }
             else {
+                let prevItems = JSON.parse(localStorage.getItem("prevItems"))
+                prevItems.splice(prevItems.indexOf(item), 1, itemInputElement.value);
+
+                localStorage.setItem("prevItems", JSON.stringify(prevItems));
                 itemInputElement.setAttribute("readonly", "readonly");
                 editElement.innerText="Edit";
             }
         });
 
         deleteElement.addEventListener("click", ()=>{
-            let prevItems = JSON.parse(localStorage.getItem("prevItems"))
+            let prevItems = JSON.parse(localStorage.getItem("prevItems"));
 
             // Delete item from localStorage AND current HTML
-            prevItems.splice(prevItems.indexOf(item), 1)
-            localStorage.setItem("prevItems", JSON.stringify(prevItems))
+            prevItems.splice(prevItems.indexOf(item), 1);
+            localStorage.setItem("prevItems", JSON.stringify(prevItems));
             element.removeChild(itemElement);
         });
     }

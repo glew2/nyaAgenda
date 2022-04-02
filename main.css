@@ -4,6 +4,12 @@
 	--darkest: #111827;
 	--grey: #6B7280;
 	--pink: #EC4899;
+	--red: #EB212E;
+	--orange: #ff8303;
+	--teel: #7fffd4;
+	--dodgerblue: #1e90ff;
+	--olivegreen: #556b2f;
+	--seagreen: #3cb371;
 	--purple: #8B5CF6;
 	--light: #EEE;
 }
@@ -38,6 +44,20 @@ header h1{
 	margin-bottom: 1rem;
 }
 
+header h3{ 
+	font-size: 1rem;
+	font-weight: 300;
+	color: var(--grey);
+	margin-bottom: 1.5rem;
+}
+
+.subhead { 
+	display: inline;
+	font-size: 0.75rem;
+	font-weight: 300;
+	color: var(--grey);
+}
+
 #new-item-form {
 	display: flex;;
 }
@@ -67,7 +87,7 @@ input, button {
 	color: var(--pink);
 	font-size: 1.25rem;
 	font-weight: 700;
-	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	background-image: linear-gradient(180deg, var(--seagreen), var(--olivegreen));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 	cursor: pointer;
@@ -107,6 +127,11 @@ main {
 	padding: 1rem;
 	border-radius: 1rem;
 	margin-bottom: 1rem;
+	will-change: transform;
+	cursor: crosshair;
+	transition: all 200ms;
+	margin: 10px auto;
+	position: relative;
 }
 
 #items .item .content {
@@ -148,7 +173,7 @@ main {
 }
 
 .item .actions .edit {
-	background-image: linear-gradient(to right, var(--pink), var(--purple));
+	background-image: linear-gradient(180deg, var(--dodgerblue), var(--teel));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
